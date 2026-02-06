@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Camera Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    video {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 12px;
+      margin-top: 15px;
+      border: 2px solid #0f0;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #0f0;
+      color: #000;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📷 Camera Demo</h2>
+  <p>This is just a fun & safe demo</p>
+
+  <button onclick="startCamera()">Turn On Camera</button>
+
+  <br><br>
+  <video id="video" autoplay playsinline></video>
+
+  <script>
+    function startCamera() {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+          document.getElementById("video").srcObject = stream;
+        })
+        .catch(err => {
+          alert("Camera permission denied ❌");
+        });
+    }
+  </script>
+
+</body>
+</html>
